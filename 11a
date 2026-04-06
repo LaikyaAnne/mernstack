@@ -1,0 +1,27 @@
+Open src/App.jsx and write: 
+import { useState } from "react"; 
+function App() { 
+const [isLoggedIn, setIsLoggedIn] = useState(false); 
+return ( 
+<div> 
+ADITYA University 
+53 
+WEB Application Development using MERN Stack 
+ADITYA University 54 
+ 
+      <h1>Conditional Rendering Example</h1> 
+ 
+      {isLoggedIn ? ( 
+        <h2>Welcome Manikanta!</h2> 
+      ) : ( 
+        <h2>Please Login</h2> 
+      )} 
+ 
+      <button onClick={() => setIsLoggedIn(!isLoggedIn)}> 
+        Toggle Login 
+      </button> 
+    </div> 
+  ); 
+} 
+ 
+export default App; 
