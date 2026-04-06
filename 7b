@@ -1,0 +1,66 @@
+const express = require('express'); 
+const app = express(); 
+const PORT = 3000; 
+app.use(express.json()); // to read JSON data 
+let items = [];  // temporary storage 
+// POST → Add data 
+app.post('/items', (req, res) => { 
+const item = req.body; 
+items.push(item); 
+res.send('Item added successfully'); 
+}); 
+// GET → Retrieve all data 
+app.get('/items', (req, res) => { 
+res.json(items); 
+}); 
+// DELETE → Delete specific item by index 
+app.delete('/items/:index', (req, res) => { 
+const index = req.params.index; 
+items.splice(index, 1); 
+res.send('Item deleted successfully'); 
+}); 
+app.listen(PORT, () => { 
+console.log(`Server running on port ${PORT}`); 
+}); 
+Node app.js 
+Open in browser : http://localhost:3000/items 
+Invoke-RestMethod ` -Uri http://localhost:3000/items ` -Method POST ` -ContentType "application/json" ` -Body '{"name":"Book"}' 
+ADITYA University 
+43 
+WEB Application Development using MERN Stack 
+c. Write a program using templating engine. 
+npm install ejs 
+const express = require('express'); 
+const app = express(); 
+const PORT = 3000; 
+app.set('view engine', 'ejs'); 
+// Route to render template 
+app.get('/', (req, res) => { 
+const user = { 
+name: "Manikanta", 
+course: "ExpressJS" 
+}; 
+res.render('home', { user }); 
+}); 
+app.listen(PORT, () => { 
+console.log(`Server running on port ${PORT}`); 
+}); 
+home.ejs 
+<!DOCTYPE html> 
+<html> 
+<head> 
+<title>Home Page</title> 
+<style> 
+body { 
+background-color: lightblue;   /* change color here */ 
+} 
+</style> 
+ADITYA University 
+44 
+WEB Application Development using MERN Stack 
+</head> 
+<body> 
+<h1>Welcome to Express EJS Templating</h1> 
+</body> 
+</html> 
+node app1.js
